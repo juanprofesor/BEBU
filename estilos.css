@@ -1,0 +1,35 @@
+/*    Okręslamy font w html, z któego inne elementy dziedziczą*/
+html {
+    font-family: arial;
+  }
+/*Stylujemy przycisk*/
+  button {
+    display: block;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 3px solid yellow;
+    padding: 10px 20px;
+    font-size: 20px;
+
+    transition: .3s;
+  }
+
+  button:hover {
+    background-color:white;
+    color: green;
+  }
+
+/*    Stylujemy diva i liczbe w nim, czyli widok naszejwylosowanej kulki*/
+  div {
+    float: left;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: limegreen;
+    margin: 10px;
+    line-height: 60px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+
+  }
