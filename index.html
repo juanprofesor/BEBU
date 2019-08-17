@@ -1,0 +1,44 @@
+<LINK REL=StyleSheet HREF="estilos.css" TYPE="text/css" MEDIA=screen>
+<button>BEBU</button>
+
+
+    <script>
+    //    Una matriz que almacena resultados
+    const result = [];
+
+//   función responsable de dibujar y colocar números en un sitio web
+    const dibujar = function() {
+
+      // comprobar si ya hay 5 números (en la tabla), en caso afirmativo, finalizar la función en este momento
+      if (result.length === 60) return;
+
+     //sorteo numeroso: el método Math.random devuelve 0 a 1 [0,1]. Si lo multiplicamos por 49, vuelve de 0 a 48.999999 si sumamos 1 y luego de 1 a 49.9999. Ahora, usando Math.floor, eliminamos el punto decimal, es decir, tenemos enteros del 1 al 49 (1,2,3 ...)
+      const sorteo = Math.floor(Math.random() * 40 + 1);
+
+     //Comprobar si dicho número no se ha dibujado antes, es decir, no está en la matriz de resultados. En la primera llamada, la tabla está vacía, luego la completamos (más código de función)
+      for (let i = 0; i < result.length; i++) {
+        //declaración condicional: verificamos el número recién dibujado con los que ya están en la tabla
+        if (sorteo === result[i]) {
+          //si el número sorteado ya está en la tabla, finalizamos esta función (dibujar) y la llamamos nuevamente, así que dibujamos nuevamente
+          return dibujar()
+        }
+      }
+//creamos un elemento div, que agregaremos al documento (página)
+      const div = document.createElement("div");
+      //asignamos a la diva creada, entre las etiquetas, el contenido en forma de un número sorteado (ubicado en la variable sorteo)
+      div.textContent = sorteo;
+      
+      //agregamos al marcador (result)
+      result.push(sorteo); 
+      
+      //agregamos un div al elemento del body
+      document.body.appendChild(div);
+    }
+
+
+    //Descargar un botón a una variable, gracias a la cual podemos trabajar en él
+    const button = document.querySelector("button");
+
+    //escuchando el evento en este caso hace clic en el botón. Después de un clic, se llamará a la aleatorización de funciones (después de un clic)
+    button.addEventListener("click", dibujar);
+    </script>
